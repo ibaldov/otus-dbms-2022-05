@@ -1,0 +1,20 @@
+version: '3.5'
+
+services:
+  postgres:
+    image: postgres:14.3-bullseye
+    container_name: postgres
+    restart: always
+    env_file:
+      - ./env_vars/.env_db_pgsql
+    secrets:
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+    ports:
+      - "5432:5432"
+
+secrets:
+  POSTGRES_USER:
+    file: ./env_vars/.POSTGRES_USER
+  POSTGRES_PASSWORD:
+    file: ./env_vars/.POSTGRES_PASSWORD
